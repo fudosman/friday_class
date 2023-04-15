@@ -3,18 +3,18 @@
 // */
 
 
-// // on(eventName, listener): Adds a listener function for a specific event.
-// const EventEmitter = require('events');
+// on(eventName, listener): Adds a listener function for a specific event.
+const EventEmitter = require('events');
 
-// const emitter = new EventEmitter();
+const emitter = new EventEmitter();
 
-// // Add a listener for the 'myEvent' event
-// emitter.on('myEvent', (arg1, arg2) => {
-//   console.log('Event emitted:', arg1, arg2);
-// });
+// Add a listener for the 'myEvent' event
+emitter.on('cry', (param1, param2, param3) => {
+  console.log('Event emitted:', arg1, arg2);
+});
 
-// // Emit the 'myEvent' event
-// emitter.emit('myEvent', 'arg1Value', 'arg2Value');
+// Emit the 'myEvent' event
+emitter.emit('cry', 'arg1Value', 'arg2Value', 'arg3Value');
 
 
 
@@ -24,7 +24,8 @@
 // const emitter = new EventEmitter();
 
 // // Add a listener for the 'myEvent' event
-// emitter.on('myEvent', (arg1, arg2) => {
+//  an event handler is an event listener
+// emitter.on('myEvent', (param1, param2) => {
 //   console.log('Event emitted:', arg1, arg2);
 // });
 

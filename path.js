@@ -58,14 +58,14 @@ Understanding and using path modules can greatly simplify file and directory ope
 // console.log(path.isAbsolute(relativePath)); // Output: false
 // console.log(path.isAbsolute(absolutePath)); // Output: true
 
-// // path.relative(from, to)
-// // Returns the relative path from one location to another
-// const path = require('path');
+// path.relative(from, to)
+// Returns the relative path from one location to another
+const path = require('path');
 
-// const fromPath = '/Users/username/Documents';
-// const toPath = '/Users/username/Documents/files/file.txt';
+const toPath = '/home/assocmaster/Desktop/CODES/techquest/class codes/';
+const fromPath = '/home/assocmaster/Desktop';
 
-// const relativePath = path.relative(fromPath, toPath);
-// console.log(relativePath); // Output: files/file.txt
+const relativePath = path.relative(fromPath, toPath);
+console.log(relativePath);
 
 
