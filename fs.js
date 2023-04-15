@@ -1,23 +1,31 @@
-// // Reading from a file using fs.readFile():
+// Reading from a file using fs.readFile():
 // const fs = require('fs');
 
-// fs.readFile('example.txt', 'utf8', (err, data) => {
+// fs.readFile('exam.txt', 'utf8', (err, data) => {
 //   if (err) throw err;
 //   console.log(data);
 // });
 
 
-// // Writing to a file using fs.writeFileSync():
+// Writing to a file using fs.writeFileSync():
 // const fs = require('fs');
 
-// fs.writeFileSync('example.txt', 'Hello, World!', 'utf8');
+// fs.writeFileSync('example.txt', 'hi how do you do?', 'utf8');
 
-// // Appending data to a file using fs.appendFile():
+// Appending data to a file using fs.appendFile():
 // const fs = require('fs');
 
-// fs.appendFile('example.txt', 'Appended Data', 'utf8', (err) => {
+// fs.appendFile('example.txt', ' newly appended file', 'utf8', (err) => {
 //   if (err) throw err;
-//   console.log('Data appended to file!');
+//   console.log('check your example.txt file to view the appened text!');
+// });
+
+// delete the example.txt file from the folder
+// const fs = require('fs');
+
+// fs.unlink('example.txt', (err) => {
+//   if (err) throw new Error(err);
+//   console.log('this file has been removed');
 // });
 
 // // Creating a readable stream from a file using fs.createReadStream():
