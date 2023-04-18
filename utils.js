@@ -1,8 +1,8 @@
 // // Formatting and inspecting objects:
 // const util = require('util');
 
-// // util.format(format[, ...args]): Returns a formatted string using a format specifier and optional arguments.
-// const formattedString = util.format('%s is %d years old', 'John', 30);
+// util.format(format[, ...args]): Returns a formatted string using a format specifier and optional arguments.
+// const formattedString = util.format('%s is %s years old %s', 'John', "30", "today");
 // console.log(formattedString); // Output: 'John is 30 years old'
 
 // // util.inspect(object[, options]): Returns a string representation of an object for debugging purposes.
@@ -10,14 +10,13 @@
 // console.log(util.inspect(obj)); // Output: '{ name: 'Alice', age: 25 }'
 
 
-// // Handling errors:
+// Handling errors:
 // const util = require('util');
 
-// // util.error([message]): Creates a new Error object with an optional error message.
-// const error = util.error('This is an error message');
-// console.error(error); // Output: 'Error: This is an error message'
+// util.error([message]): Creates a new Error object with an optional error message.
 
-// // util.isError(object): Returns true if the given object is an instance of the Error class or inherits from it.
+
+// util.isError(object): Returns true if the given object is an instance of the Error class or inherits from it.
 // console.log(util.isError(new Error())); // Output: true
 // console.log(util.isError({})); // Output: false
 
@@ -42,10 +41,11 @@
 //   console.log('Stream finished');
 // });
 
-// // util.pipeline([...streams], callback): Pipes a series of streams together and calls a callback when they are all finished.
+// util.pipeline([...streams], callback): Pipes a series of streams together and calls a callback when they are all finished.
 // const readableStream1 = fs.createReadStream('file1.txt');
 // const readableStream2 = fs.createReadStream('file2.txt');
 // const writableStream = fs.createWriteStream('output.txt');
+
 // util.pipeline([readableStream1, readableStream2], writableStream, (err) => {
 //   if (err) throw err;
 //   console.log('Piping finished');
@@ -92,20 +92,20 @@
 
 // const util = require('util');
 
-// console.log(util.types.isArray([])); // true
+// console.log(util.types.isInt8Array(new Int8Array));
 // console.log(util.types.isDate(new Date())); // true
 // console.log(util.types.isRegExp(/regex/)); // true
 // // and so on...
 
 
-// // util.deprecate(function, string): This function wraps a function with a deprecation warning message. It can be used to mark a function or method as deprecated and provide a custom warning message when it is used:
+// util.deprecate(function, string): This function wraps a function with a deprecation warning message. It can be used to mark a function or method as deprecated and provide a custom warning message when it is used:
 
-// const util = require('util');
+const util = require('util');
 
-// function deprecatedFunction() {
-//   console.log('This function is deprecated!');
-// }
+function deprecatedFunction() {
+  console.log('This function is deprecated!');
+}
 
-// const deprecatedFn = util.deprecate(deprecatedFunction, 'This function is deprecated. Please avoid using it.');
+const deprecatedFn = util.deprecate(deprecatedFunction, 'This function is deprecated. Please avoid using it.');
 
-// deprecatedFn(); // logs the warning message and invokes the deprecatedFunction
+deprecatedFn(); // logs the warning message and invokes the deprecatedFunction
