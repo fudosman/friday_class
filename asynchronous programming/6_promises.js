@@ -1,4 +1,5 @@
 // Example using Promises
+let userData, postsData, commentsData, likesData;
 
 // Function 1
 function fetchUserData(userId) {
@@ -60,16 +61,24 @@ function displayData(userData, postsData, commentsData, likesData) {
 
 // Call the functions using Promises
 fetchUserData(1)
-  .then(userData => {
+  .then(data => {
+    console.log(data);
+    userData = data;
     return fetchPosts(userData.id);
   })
-  .then(postsData => {
+  .then(data => {
+    console.log(data);
+    postsData = data;
     return fetchComments(postsData[0]);
   })
-  .then(commentsData => {
-    return fetchLikes(postsData[1]);
+  .then(data => {
+    console.log(data);
+    commentsData = data;
+    return fetchLikes(commentsData[0]);
   })
-  .then(likesData => {
+  .then(data => {
+    console.log(data);
+    likesData = data;
     return displayData(userData, postsData, commentsData, likesData);
   })
   .then(() => {
@@ -81,142 +90,142 @@ fetchUserData(1)
 
 
 
-// states
-function fetchUserData(userId) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log('Fetching user data...');
-      const userData = { id: userId, name: 'John' };
-      resolve(userData);
-    }, 1000);
-  });
-}
+// // states
+// function fetchUserData(userId) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log('Fetching user data...');
+//       const userData = { id: userId, name: 'John' };
+//       resolve(userData);
+//     }, 1000);
+//   });
+// }
 
-const userDataPromise = fetchUserData(1);
+// const userDataPromise = fetchUserData(1);
 
-console.log(userDataPromise); // Promise { <pending> }
+// console.log(userDataPromise); // Promise { <pending> }
 
-userDataPromise.then(userData => {
-  console.log(userData); // { id: 1, name: 'John' }
-});
-
-
-// composition
-function fetchUserData(userId) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log('Fetching user data...');
-      const userData = { id: userId, name: 'John' };
-      resolve(userData);
-    }, 1000);
-  });
-}
-
-function fetchPosts(userData) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log('Fetching posts...');
-      const postsData = ['Post 1', 'Post 2', 'Post 3'];
-      resolve(postsData);
-    }, 1000);
-  });
-}
-
-function fetchComments(userData) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log('Fetching comments...');
-      const commentsData = ['Comment 1', 'Comment 2', 'Comment 3'];
-      resolve(commentsData);
-    }, 1000);
-  });
-}
-
-const userDataPromise = fetchUserData(1);
-const postsDataPromise = fetchPosts(userDataPromise);
-const commentsDataPromise = fetchComments(userDataPromise);
-
-Promise.all([postsDataPromise, commentsDataPromise])
-  .then(([postsData, commentsData]) => {
-    console.log('Posts data:', postsData);
-    console.log('Comments data:', commentsData);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+// userDataPromise.then(userData => {
+//   console.log(userData); // { id: 1, name: 'John' }
+// });
 
 
-// clean up
-function fetchData() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log('Fetching data...');
-      const data = 'Some data';
-      // Uncomment the line below to simulate an error
-      // reject(new Error('Error fetching data'));
-      resolve(data);
-    }, 1000);
-  });
-}
+// // composition
+// function fetchUserData(userId) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log('Fetching user data...');
+//       const userData = { id: userId, name: 'John' };
+//       resolve(userData);
+//     }, 1000);
+//   });
+// }
 
-fetchData()
-  .then(data => {
-    console.log('Data:', data);
-  })
-  .catch(error => {
-    console.error(error);
-  })
-  .finally(() => {
-    console.log('Cleanup: Closing resources...'); // Cleanup task
-  });
+// function fetchPosts(userData) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log('Fetching posts...');
+//       const postsData = ['Post 1', 'Post 2', 'Post 3'];
+//       resolve(postsData);
+//     }, 1000);
+//   });
+// }
 
+// function fetchComments(userData) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log('Fetching comments...');
+//       const commentsData = ['Comment 1', 'Comment 2', 'Comment 3'];
+//       resolve(commentsData);
+//     }, 1000);
+//   });
+// }
 
-// backwards compatibility
-const fs = require('fs');
-const util = require('util');
+// const userDataPromise = fetchUserData(1);
+// const postsDataPromise = fetchPosts(userDataPromise);
+// const commentsDataPromise = fetchComments(userDataPromise);
 
-// Example with callback-based code
-fs.readFile('file.txt', 'utf8', (error, data) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('Data:', data);
-  }
-});
-
-// Example with Promises using util.promisify()
-const readFile = util.promisify(fs.readFile);
-
-readFile('file.txt', 'utf8')
-  .then(data => {
-    console.log('Data:', data);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+// Promise.all([postsDataPromise, commentsDataPromise])
+//   .then(([postsData, commentsData]) => {
+//     console.log('Posts data:', postsData);
+//     console.log('Comments data:', commentsData);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
 
 
+// // clean up
+// function fetchData() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log('Fetching data...');
+//       const data = 'Some data';
+//       // Uncomment the line below to simulate an error
+//       // reject(new Error('Error fetching data'));
+//       resolve(data);
+//     }, 1000);
+//   });
+// }
 
-// 7. Error Handling:
+// fetchData()
+//   .then(data => {
+//     console.log('Data:', data);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   })
+//   .finally(() => {
+//     console.log('Cleanup: Closing resources...'); // Cleanup task
+//   });
 
-// Promises provide a consistent and centralized way to handle errors in asynchronous code.Errors that occur in Promises can be caught using the `.catch()` method, allowing for proper error handling and propagation.Here's an example:
 
-function fetchData() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log('Fetching data...');
-      // Uncomment the line below to simulate an error
-      // throw new Error('Error fetching data');
-      const data = 'Some data';
-      resolve(data);
-    }, 1000);
-  });
-}
+// // backwards compatibility
+// const fs = require('fs');
+// const util = require('util');
 
-fetchData()
-  .then(data => {
-    console.log('Data:', data);
-  })
-  .catch(error => {
-    console.error('Error:', error); // Error handling
-  });
+// // Example with callback-based code
+// fs.readFile('file.txt', 'utf8', (error, data) => {
+//   if (error) {
+//     console.error(error);
+//   } else {
+//     console.log('Data:', data);
+//   }
+// });
+
+// // Example with Promises using util.promisify()
+// const readFile = util.promisify(fs.readFile);
+
+// readFile('file.txt', 'utf8')
+//   .then(data => {
+//     console.log('Data:', data);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+
+
+
+// // 7. Error Handling:
+
+// // Promises provide a consistent and centralized way to handle errors in asynchronous code.Errors that occur in Promises can be caught using the `.catch()` method, allowing for proper error handling and propagation.Here's an example:
+
+// function fetchData() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log('Fetching data...');
+//       // Uncomment the line below to simulate an error
+//       // throw new Error('Error fetching data');
+//       const data = 'Some data';
+//       resolve(data);
+//     }, 1000);
+//   });
+// }
+
+// fetchData()
+//   .then(data => {
+//     console.log('Data:', data);
+//   })
+//   .catch(error => {
+//     console.error('Error:', error); // Error handling
+//   });

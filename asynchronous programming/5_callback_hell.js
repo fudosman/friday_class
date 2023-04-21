@@ -51,19 +51,19 @@ function displayData(userData, postsData, commentsData, likesData, callback) {
 // Call the functions in nested callbacks
 fetchUserData(1, (error, userData) => {
   if (error) {
-    console.error(error);
+    console.error(error.message);
   } else {
     fetchPosts(userData.id, (error, postsData) => {
       if (error) {
-        console.error(error);
+        console.error(error.message);
       } else {
         fetchComments(postsData[0], (error, commentsData) => {
           if (error) {
-            console.error(error);
+            console.error(error.message);
           } else {
             fetchLikes(postsData[1], (error, likesData) => {
               if (error) {
-                console.error(error);
+                console.error(error.message);
               } else {
                 displayData(userData, postsData, commentsData, likesData, (error) => {
                   if (error) {

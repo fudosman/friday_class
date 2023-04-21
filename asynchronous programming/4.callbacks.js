@@ -5,12 +5,13 @@ function getData(callback) {
   setTimeout(() => {
     const data = 'This is the data';
     // Simulating an error condition
-    const error = null; // Set to non-null value to simulate an error
+    const error = new Error("this is an error"); // Set to non-null value to simulate an error
 
     // Check for error condition
     if (error) {
       // If error, invoke the callback with error as the first argument
-      callback(new Error('Error fetching data'));
+      console.log({ error });
+      return "plz check your code and its configuration."
     } else {
       // If no error, invoke the callback with null as the first argument
       // and the data as the second argument
