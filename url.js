@@ -44,7 +44,7 @@
 const url = require('url');
 
 // Example usage of URL properties
-const myUrl = new url.URL('https://www.example.com/some/path?param1=value1&param2=value2');
+const myUrl = new url.URL('https://www.example.com:3000/some/path?param1=value1&param2=value2#ajdhghyeuywueiuriowouuqp');
 
 console.log('Protocol:', myUrl.protocol);
 console.log('Username:', myUrl.username);
@@ -58,12 +58,12 @@ console.log('Hash:', myUrl.hash);
 console.log('Origin:', myUrl.origin);
 console.log('Href:', myUrl.href);
 
-// Example usage of URL.searchParams
-console.log('Search Params:', myUrl.searchParams);
-console.log('Value of param1:', myUrl.searchParams.get('param1'));
-myUrl.searchParams.set('param3', 'value3');
-console.log('Updated Search Params:', myUrl.searchParams);
+// // Example usage of URL.searchParams
+// console.log('Search Params:', myUrl.searchParams);
+// console.log('Value of param1:', myUrl.searchParams.get('param1'));
+// myUrl.searchParams.set('param3', 'value3');
+// console.log('Updated Search Params:', myUrl.searchParams);
 
-// Example usage of URL methods
-console.log('Serialized URL:', myUrl.toString());
-console.log('JSON representation of URL:', myUrl.toJSON());
+// // Example usage of URL methods
+// console.log('Serialized URL:', myUrl.toString());
+// console.log('JSON representation of URL:', myUrl.toJSON());

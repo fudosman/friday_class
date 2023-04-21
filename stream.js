@@ -1,16 +1,18 @@
-// // read(size): Reads data from the stream and returns it, or null if no data is available. Example:
+// read(size): Reads data from the stream and returns it, or null if no data is available. Example:
 
-
+const fs = require('fs');
 // const readableStream = fs.createReadStream('file.txt');
+
 // readableStream.on('readable', () => {
 //   let chunk;
 //   while ((chunk = readableStream.read()) !== null) {
-//     console.log(`Received ${chunk.length} bytes of data`);
+//     // console.log(`Received ${chunk.length} bytes of data`);
+//     console.log(chunk);
 //   }
 // });
 
-// // pipe(destination[, options]): Pipes data from the readable stream to a writable stream. Example:
-// const readableStream = fs.createReadStream('file.txt');
+// // // pipe(destination[, options]): Pipes data from the readable stream to a writable stream. Example:
+// const readableStream = fs.createReadStream('os.js');
 // const writableStream = fs.createWriteStream('output.txt');
 // readableStream.pipe(writableStream);
 
@@ -19,16 +21,21 @@
 // const readableStream = fs.createReadStream('file.txt');
 // const writableStream = fs.createWriteStream('output.txt');
 // const pipe = readableStream.pipe(writableStream);
+
 // // Later, stop piping data
 // readableStream.unpipe(writableStream);
 
 // // pause(): Pauses the readable stream, preventing it from emitting 'data' events. Example:
 // const readableStream = fs.createReadStream('file.txt');
 // readableStream.on('data', (chunk) => {
-//   console.log(`Received ${chunk.length} bytes of data`);
-//   readableStream.pause(); // Pause the stream after receiving one chunk
+//   console.log(`Received ${chunk.length} bytes of data.`);
+//   readableStream.pause();
+//   console.log('There will be no additional data for 5 second.');
+//   setTimeout(() => {
+//     console.log('Now data will start flowing again.');
+//     readableStream.resume();
+//   }, 5000);
 // });
-
 
 // resume(): Resumes a paused readable stream.Example:
 // const readableStream = fs.createReadStream('file.txt');
@@ -49,9 +56,9 @@
 
 
 // // setEncoding(encoding): Sets the encoding of the readable stream. Example:
-// const readableStream = fs.createReadStream('file.txt', { encoding: 'utf8' });
+// const readableStream = fs.createReadStream('Javascript Conditionals.pdf', { encoding: "utf-8" });
 // readableStream.on('data', (chunk) => {
-//   console.log(`Received data: ${chunk}`);
+//   console.log(`Received data: ${chunk.length}`);
 // });
 
 

@@ -7,10 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "keywords": "react 24, react tq, react dg",
+  "keywords": [
+    "react 24",
+    "react tq",
+    "react dg"
+  ],
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "http-proxy": "^1.18.1",
+    "querystring": "^0.2.1",
     "react": "^18.2.0"
   }
 }
